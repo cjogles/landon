@@ -19,9 +19,9 @@ const HotelInfo = () => {
         <section id="arrivalinfo">
           <h2>Arrival Information</h2>
           <ul>
-            {arrivalInformation.map(text => {
+            {arrivalInformation.map((text, index) => {
               return (
-                <li>
+                <li key={index + "arrivalInformation"}>
                   <strong>{text.strong}</strong> {text.normal}
                 </li>
               )
@@ -35,9 +35,9 @@ const HotelInfo = () => {
             your stay comfortable, and your experience one-of-a-kind.
           </p>
           <ul>
-            {servicesAndAmenities.map(service => {
+            {servicesAndAmenities.map((service, index) => {
               return (
-                <li>{getDecodedString(service.text)}</li> // so HTML special char &amp; renders as an ampersand i.e. &
+                <li key={index + "servicesAndAmenities"}>{getDecodedString(service.text)}</li> // so HTML special char &amp; renders as an ampersand i.e. &
               )
             })}
           </ul>
@@ -45,14 +45,14 @@ const HotelInfo = () => {
         <section className="checklist" id="accessibility">
           <h2>Accessibility</h2>
           <p>
-            We're committed to maintaining the same quality of service for every
+            We&apos;re committed to maintaining the same quality of service for every
             individual. We offer the following facilities for those with special
             needs:
           </p>
           <ul>
-            {accessibility.map(service => {
+            {accessibility.map((service, index) => {
               return (
-                <li>{getDecodedString(service.text)}</li> // so HTML special char &amp; renders as an ampersand i.e. &
+                <li key={index + "accessibility"}>{getDecodedString(service.text)}</li> // so HTML special char &amp; renders as an ampersand i.e. &
               )
             })}
           </ul>

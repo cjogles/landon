@@ -6,12 +6,13 @@ const Welcome = () => {
     <div className="scene" id="welcome">
       <article className="content">
         <div className="gallery">
-          {welcomeImages.map(img => {
+          {welcomeImages.map((img, index) => {
             return (
               <img 
-                class={`${img.class ? img.class : ""}`} 
+                className={`${img.className ? img.className : ""}`} 
                 src={img.src} 
-                alt={img.alt} 
+                alt={img.alt}
+                key={index + "welcomeImages"}
               />
             )
           })}
