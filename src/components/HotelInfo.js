@@ -1,4 +1,13 @@
 import React from "react";
+import arrivalInformation from "./data/arrival_information.json";
+import servicesAndAmenities from "./data/services_and_amenities.json";
+import accessibility from "./data/accessibility.json";
+
+const getDecodedString = (str) => {
+  const txt = document.createElement('textarea');
+  txt.innerHTML = str;
+  return txt.value;
+};
 
 const HotelInfo = () => {
   return (
@@ -10,30 +19,13 @@ const HotelInfo = () => {
         <section id="arrivalinfo">
           <h2>Arrival Information</h2>
           <ul>
-            <li>
-              <strong>Check-in:</strong> 3:00 PM
-            </li>
-            <li>
-              <strong>Check-out:</strong> 11:00 AM
-            </li>
-            <li>
-              <strong>Parking:</strong> Self-parking in the underground garage
-              is ￡15 per day and valet-parking is ￡50 per day.
-            </li>
-            <li>
-              <strong>Airport Shuttle:</strong> Our complimentary airport
-              shuttles leave every hour on the hour, and make trips to Heathrow
-              and Gatwick airports.
-            </li>
-            <li>
-              <strong>Trains:</strong> The nearest Underground station is at
-              Leicester Square.
-            </li>
-            <li>
-              <strong>Pet Policy:</strong> Pets of all sizes and types are
-              allowed in designated pet rooms, and the specified common areas.
-              Service animals are allowed everywhere.
-            </li>
+            {arrivalInformation.map(text => {
+              return (
+                <li>
+                  <strong>{text.strong}</strong> {text.normal}
+                </li>
+              )
+            })}
           </ul>
         </section>
         <section className="checklist" id="services">
@@ -43,21 +35,11 @@ const HotelInfo = () => {
             your stay comfortable, and your experience one-of-a-kind.
           </p>
           <ul>
-            <li>Indoor pool</li>
-            <li>24-hour fitness center</li>
-            <li>Massage therapy</li>
-            <li>Full service spa</li>
-            <li>In-room jacuzzi tubs</li>
-            <li>Rooftop café &amp; smoothie bar</li>
-            <li>Coffee bar &amp; pastry shop</li>
-            <li>Traditional continental breakfast</li>
-            <li>24-hour concierge service</li>
-            <li>Business center</li>
-            <li>Complimentary wireless service</li>
-            <li>Laundry &amp; dry cleaning service</li>
-            <li>Daily paper</li>
-            <li>Certified "green" hotel</li>
-            <li>Pet-friendly rooms &amp; common areas</li>
+            {servicesAndAmenities.map(service => {
+              return (
+                <li>{getDecodedString(service.text)}</li> // so HTML special char &amp; renders as an ampersand i.e. &
+              )
+            })}
           </ul>
         </section>
         <section className="checklist" id="accessibility">
@@ -68,19 +50,11 @@ const HotelInfo = () => {
             needs:
           </p>
           <ul>
-            <li>Grab bars on tub walls</li>
-            <li>Shower chairs</li>
-            <li>Hand held shower sprayers</li>
-            <li>Higher toilets &amp; toilet modifiers</li>
-            <li>Lower sink faucet handles</li>
-            <li>Wheelchair clearance under sinks &amp; vanity</li>
-            <li>Lower racks in closet</li>
-            <li>TDD machines</li>
-            <li>Telephone light signalers &amp; smoke alarms</li>
-            <li>Telephone amplification handsets</li>
-            <li>Closed captioned television converters</li>
-            <li>Vibrating alarm clocks</li>
-            <li>Telephones with volume control</li>
+            {accessibility.map(service => {
+              return (
+                <li>{getDecodedString(service.text)}</li> // so HTML special char &amp; renders as an ampersand i.e. &
+              )
+            })}
           </ul>
         </section>
       </article>
